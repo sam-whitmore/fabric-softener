@@ -1,13 +1,16 @@
-import { useFruits } from '../hooks/useFruits.ts'
+import { useAuth0 } from '@auth0/auth0-react'
+import LoginButton from './LoginButton.tsx'
+import LogoutButton from './LogoutButton.tsx'
+import Profile from './Profile.tsx'
 
 function App() {
-  const { data } = useFruits()
+  const { user } = useAuth0();
 
   return (
     <>
       <div className="app">
-        <h1>Fullstack Boilerplate - with Fruits!</h1>
-        <ul>{data && data.map((fruit) => <li key={fruit}>{fruit}</li>)}</ul>
+        <Profile />
+        {user ? <LogoutButton /> : <LoginButton />}
       </div>
     </>
   )
