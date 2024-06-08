@@ -1,10 +1,11 @@
+import { User } from "@auth0/auth0-react";
 import useResponses from "../hooks/useResponses";
 import SingleResponse from "./SingleResponse";
 
-export default function UserData() {
+export default function UserData(user: User) {
   const responses = useResponses()
 
-  const { data, isPending, isError, error } = responses.all()
+  const { data, isPending, isError, error } = responses.allByUser(user.sub as string)
 
   if (isPending) return (<p>Fetching User Data...</p>)
   if (isError) {

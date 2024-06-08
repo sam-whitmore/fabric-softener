@@ -17,7 +17,18 @@ export default function useResponses() {
     })
   }
 
+  function useGetAllResponsesByUser(token: string) {
+    return useQuery({
+      queryKey: ['responses'],
+      queryFn: async () => {
+        const res = await request.get(`${rootURL}/user/`).set('Authorization', `Bearer ${token}`)
+        return res.body as Response[]
+      }
+    })
+  }
+
   return {
-    all: useGetAllResponses
+    all: useGetAllResponses,
+    allByUser: useGetAllResponsesByUser
   }
 }
