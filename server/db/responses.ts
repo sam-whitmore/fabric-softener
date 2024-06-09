@@ -14,3 +14,7 @@ export async function getAllUserResponses(sub: string) {
 export async function addResponse(response: ResponseData) {
   return db('responses').insert(response)
 }
+
+export async function deleteResponse(id: number) {
+  return db('responses').where({id}).del()
+}

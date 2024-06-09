@@ -39,7 +39,21 @@ router.post('/', checkJwt, async (req: JwtRequest, res) => {
     res.json(result)
   } catch (error) {
     console.error(`Error: ${error}`)
-    res.sendStatus(500)
+    res.sendStatus(500).json({ error: "Server-side Routing Failed to Add Response to Database" })
+  }
+})
+
+router.delete('/:id', checkJwt, async (req: JwtRequest, res) => {
+  const sub = req.auth?.sub
+  const { id } = req.params
+  if (!sub) {
+    res.sendStatus(401)
+  }
+  try {
+     await db.deleteResponse(Number(id))
+  } catch (error) {
+    console.error(`Error: ${error}`)
+    res.sendStatus(500).json({ error: "Server-side Routing Failed to Delete Response from Database" })
   }
 })
 
