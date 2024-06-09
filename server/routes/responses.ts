@@ -1,7 +1,6 @@
 import { Router } from 'express'
 import * as db from '../db/responses.ts'
 import checkJwt, { JwtRequest } from '../auth0.ts'
-// import checkJwt, { JwtRequest } from '../auth0.ts'
 
 const router = Router()
 
@@ -11,7 +10,7 @@ router.get('/', async (req, res) => {
     res.json(result)
   } catch (error) { 
     console.error(`Error: ${error}`) 
-    res.sendStatus(500).json({ error: "Server-side Routing Failed to Fetch"})
+    res.sendStatus(500).json({ error: "Server-side Routing Failed to Fetch" })
   }
 })
 
@@ -21,11 +20,26 @@ router.get('/user/', checkJwt, async (req: JwtRequest, res) => {
     res.sendStatus(401)
   }
   try {
-    const result = await db.getAllResponsesByUser(sub as string)
+    const result = await db.getAllUserResponses(sub as string)
     res.json(result)
   } catch (error) {
     console.error(`Error: ${error}`)
-    res.sendStatus(500).json({error: "Server-side Routing Failed to Fetch"})
+    res.sendStatus(500).json({ error: "Server-side Routing Failed to Fetch" })
+  }
+})
+
+router.post('/', checkJwt, async (req: JwtRequest, res) => {
+  const sub = req.auth?.sub
+  const response = req.body
+  if (!sub) {
+    res.sendStatus(401)
+  }
+  try {
+    const result = await db.addResponse({...response, user_auth0_sub: sub})
+    res.json(result)
+  } catch (error) {
+    console.error(`Error: ${error}`)
+    res.sendStatus(500)
   }
 })
 

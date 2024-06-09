@@ -1,5 +1,4 @@
 export interface ResponseData {
-  user_auth0_sub: string;
   quant:          number;
   qual:           string;
   datetime:       Date;
@@ -9,6 +8,10 @@ export interface ResponseData {
   temp_C:         number;
 }
 
-export interface Response extends ResponseData {
+export interface AuthorizedResponseData extends ResponseData {
+  user_auth0_sub: string;
+}
+
+export interface Response extends AuthorizedResponseData {
   id: number
 }
