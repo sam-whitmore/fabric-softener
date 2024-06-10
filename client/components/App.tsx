@@ -1,15 +1,13 @@
 import Nav from './Nav.tsx'
-import DetailedProfileView from './DetailedProfileView.tsx'
-import Survey from './Survey.tsx'
+import Main from './Main.tsx'
 
 function App() {
   return (
     <>
       <div className="app">
         <Nav />
-        <DetailedProfileView />
+        <Main />
       </div>
-      <Survey />
     </>
   )
 }

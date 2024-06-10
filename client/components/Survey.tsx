@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react"
-import useBackgroundCalculations from "../hooks/useBackgroundCalculations"
+import { useState, useEffect } from 'react'
+import useBackgroundCalculations from '../hooks/useBackgroundCalculations'
 
 export default function Survey() {
   const [sliderValue, setSliderValue] = useState(5000)
 
-  function handleSliderChange(e) {
-    setSliderValue(e.target.value)
+  function handleSliderChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setSliderValue(parseInt(e.target.value))
   }
 
   const background = useBackgroundCalculations()
@@ -17,7 +17,14 @@ export default function Survey() {
   return (
     <div>
       <p>How are you?</p>
-      <input type="range" min="1" value={sliderValue} max="9999" className="slider" onChange={handleSliderChange}></input>
+      <input
+        type="range"
+        min="1"
+        value={sliderValue}
+        max="10000"
+        className="slider w-4/5"
+        onChange={handleSliderChange}
+      ></input>
       <button></button>
     </div>
   )

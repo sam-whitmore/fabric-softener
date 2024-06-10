@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { CurveInterpolator } from "curve-interpolator";
+import { useState } from 'react'
+import { CurveInterpolator } from 'curve-interpolator'
 
 export default function useBackgroundCalculations() {
   const [hue, setHue] = useState(208)
@@ -8,61 +8,62 @@ export default function useBackgroundCalculations() {
   const [alpha, setAlpha] = useState(50)
 
   function calculateHue(sliderValue: number) {
-    // x = sliderValue, y = lightnessValue
+    // x = sliderValue, y = hueValue
     type Point = [number, number]
 
     const points: Point[] = [
-      [0, 208],
-      [10000, 218]
+      [0, 214],
+      [10000, 208],
     ]
-    const t = (sliderValue / 10000)
-    const lerp = new CurveInterpolator(points, { tension: 0, alpha: 0.5})
+    const t = sliderValue / 10000
+    const lerp = new CurveInterpolator(points, { tension: 0, alpha: 0.5 })
 
     return setHue(lerp.getPointAt(t)[1])
   }
 
   function calculateSaturation(sliderValue: number) {
-      // x = sliderValue, y = lightnessValue
+    // x = sliderValue, y = saturationValue
     type Point = [number, number]
 
     const points: Point[] = [
       [0, 0],
-      [4000, 65],
-      [10000, 85]
+      [3300, 33],
+      [5500, 99],
+      [10000, 100],
     ]
-    const t = (sliderValue / 10000)
-    const lerp = new CurveInterpolator(points, { tension: 0, alpha: 0.5})
+    const t = sliderValue / 10000
+    const lerp = new CurveInterpolator(points, { tension: 0, alpha: 0.5 })
 
     return setSaturation(lerp.getPointAt(t)[1])
   }
 
   function calculateLightness(sliderValue: number) {
-      // x = sliderValue, y = lightnessValue
+    // x = sliderValue, y = lightnessValue
     type Point = [number, number]
 
     const points: Point[] = [
       [0, 0],
-      [2000, 95],
-      [4000, 85],
-      [6000, 70],
-      [10000, 55]
+      [2200, 55],
+      [4400, 85],
+      [6600, 66],
+      [10000, 50],
     ]
-    const t = (sliderValue / 10000)
-    const lerp = new CurveInterpolator(points, { tension: 0, alpha: 0.5})
+    const t = sliderValue / 10000
+    const lerp = new CurveInterpolator(points, { tension: 0, alpha: 0.5 })
 
     return setLightness(lerp.getPointAt(t)[1])
   }
 
   function calculateAlpha(sliderValue: number) {
-      // x = sliderValue, y = lightnessValue
+    // x = sliderValue, y = alphaValue
     type Point = [number, number]
 
     const points: Point[] = [
-      [0, 80],
-      [10000, 100]
+      [0, 100],
+      [10000, 100],
     ]
-    const t = (sliderValue / 10000)
-    const lerp = new CurveInterpolator(points, { tension: 0, alpha: 0.5})
+    const t = sliderValue / 10000
+    const lerp = new CurveInterpolator(points, { tension: 0, alpha: 0.5 })
 
     return setAlpha(lerp.getPointAt(t)[1])
   }
@@ -73,17 +74,13 @@ export default function useBackgroundCalculations() {
     calculateLightness(sliderValue)
     calculateAlpha(sliderValue)
 
+    console.log(sliderValue)
     console.log(`hsla(${hue}, ${saturation}%, ${lightness}%, ${alpha}%)`)
 
     return `hsla(${hue}, ${saturation}%, ${lightness}%, ${alpha}%)`
   }
 
   return {
-    hue: calculateHue,
-    saturation: calculateSaturation,
-    lightness: calculateLightness,
-    alpha: calculateAlpha,
-    set: setBackgroundColor
+    set: setBackgroundColor,
   }
-
 }

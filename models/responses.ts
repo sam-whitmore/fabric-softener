@@ -1,6 +1,6 @@
 export interface ResponseData {
   quant:          number;
-  qual:           string;
+  qual?:           string;
   datetime:       Date;
   latitude?:       number;
   longitude?:      number;

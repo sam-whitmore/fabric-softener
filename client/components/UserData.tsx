@@ -1,23 +1,22 @@
-import useResponses from "../hooks/useResponses";
-import SingleResponse from "./SingleResponse";
+import useResponses from '../hooks/useResponses'
+import LinePlot from './graphics/LinePlot'
+import SingleResponse from './SingleResponse'
 
 export default function UserData() {
   const responses = useResponses()
 
   const { data, isPending, isError, error } = responses.allByUser()
 
-  if (isPending) return (<p>Fetching User Data...</p>)
+  if (isPending) return <p>Fetching User Data...</p>
   if (isError) {
     console.error(error)
-    return ( 
-      <p>Error: {error.message}</p>
-    )
+    return <p>Error: {error.message}</p>
   }
 
   return (
     <div>
       {data.map((response) => (
-        <SingleResponse 
+        <SingleResponse
           key={response.id}
           id={response.id}
           user_auth0_sub={response.user_auth0_sub}
@@ -30,6 +29,7 @@ export default function UserData() {
           temp_C={response.temp_C}
         />
       ))}
+      {/* <LinePlot /> */}
     </div>
   )
 }
