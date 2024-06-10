@@ -4,7 +4,8 @@ export default {
     "./client/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+    },
   },
   plugins: [],
 }

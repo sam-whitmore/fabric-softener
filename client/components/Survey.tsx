@@ -3,18 +3,16 @@ import useBackgroundCalculations from "../hooks/useBackgroundCalculations"
 
 export default function Survey() {
   const [sliderValue, setSliderValue] = useState(5000)
-  // const [bg, setBg] = useState('white')
 
   function handleSliderChange(e) {
     setSliderValue(e.target.value)
   }
 
-  const calculations = useBackgroundCalculations()
+  const background = useBackgroundCalculations()
 
   useEffect(() => {
-    calculations.lightness(sliderValue)
-  }, [calculations, sliderValue])
-  
+    document.body.style.backgroundColor = background.set(sliderValue)
+  }, [background, sliderValue])
 
   return (
     <div>
