@@ -1,5 +1,6 @@
 import Nav from './Nav.tsx'
 import DetailedProfileView from './DetailedProfileView.tsx'
+import Survey from './Survey.tsx'
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
         <Nav />
         <DetailedProfileView />
       </div>
+      <Survey />
     </>
   )
 }
