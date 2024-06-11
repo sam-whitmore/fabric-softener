@@ -1,5 +1,5 @@
 import useResponses from '../hooks/useResponses'
-import LinePlot from './graphics/LinePlot'
+// import LinePlot from './graphics/LinePlot'
 import SingleResponse from './SingleResponse'
 
 export default function UserData() {
