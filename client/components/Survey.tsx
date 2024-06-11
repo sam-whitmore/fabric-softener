@@ -15,17 +15,21 @@ export default function Survey() {
   }, [background, sliderValue])
 
   return (
-    <div>
-      <p>How are you?</p>
+    <div className="h-screen w-screen text-center">
+      <p className="text-center text-3xl text-white">
+        How are you?
+      </p>
       <input
         type="range"
         min="1"
         value={sliderValue}
         max="10000"
-        className="slider w-4/5"
+        className="slider mx-auto w-4/5"
         onChange={handleSliderChange}
       ></input>
-      <button></button>
+      <button className="text-center text-3xl text-white">
+        {(sliderValue / 1000).toFixed(1)}
+      </button>
     </div>
   )
 }
