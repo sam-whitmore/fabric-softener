@@ -4,7 +4,7 @@ import Main from './Main.tsx'
 export default function Home() {
   return (
     <>
-      <div className="app">
+      <div>
         <Nav />
         <Main />
       </div>
