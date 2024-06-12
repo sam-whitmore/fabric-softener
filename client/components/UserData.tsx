@@ -1,5 +1,4 @@
 import useResponses from '../hooks/useResponses'
-// import LinePlot from './graphics/LinePlot'
 import SingleResponse from './SingleResponse'
 
 export default function UserData() {
@@ -29,7 +28,6 @@ export default function UserData() {
           temp_C={response.temp_C}
         />
       ))}
-      {/* <LinePlot /> */}
     </div>
   )
 }

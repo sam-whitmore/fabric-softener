@@ -1,9 +1,9 @@
 export interface ResponseData {
   quant:          number;
   qual?:           string;
-  datetime:       Date;
-  latitude?:       number;
-  longitude?:      number;
+  datetime:       string;
+  latitude:       number;
+  longitude:      number;
   climate:        string;
   temp_C:         number;
 }

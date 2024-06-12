@@ -1,3 +1,7 @@
+import request from "superagent";
+import { Weather } from "../../models/weather";
+import { useQuery } from "@tanstack/react-query";
+
 export default function useLocation() {
 
   function useGetCurrentLocation() {
@@ -18,7 +22,19 @@ export default function useLocation() {
     }
   }
 
+  function useGetWeather(latitude: number, longitude: number) {
+    return useQuery({
+      queryKey: ['weather', latitude, longitude],
+      queryFn: async () => {
+        const res = await request.get('/api/v1/location/weather').query({latitude, longitude})
+        return res.body as Weather
+      }
+    })
+    
+  }
+
   return {
-    getCurrent: useGetCurrentLocation
+    getCurrent: useGetCurrentLocation,
+    weather: useGetWeather
   }
 }

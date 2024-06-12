@@ -11,6 +11,10 @@ export async function getAllUserResponses(sub: string) {
   return db('responses').where({user_auth0_sub: sub})
 }
 
+export async function getLatestUserResponse(sub: string) {
+  return await db('responses').where({user_auth0_sub: sub}).orderBy('datetime', 'desc').first()
+}
+
 export async function addResponse(response: ResponseData) {
   return db('responses').insert(response)
 }

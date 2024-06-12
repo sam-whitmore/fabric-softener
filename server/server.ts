@@ -1,13 +1,16 @@
+import 'dotenv/config'
 import express from 'express'
 import * as Path from 'node:path'
 
 import responsesRoutes from './routes/responses.ts'
+import locationRoutes from './routes/location.ts'
 
 const server = express()
 
 server.use(express.json())
 
 server.use('/api/v1/responses', responsesRoutes)
+server.use('/api/v1/location', locationRoutes)
 
 if (process.env.NODE_ENV === 'production') {
   server.use(express.static(Path.resolve('public')))

@@ -8,9 +8,9 @@ router.get('/', async (req, res) => {
   try {
     const result = await db.getAllResponses()
     res.json(result)
-  } catch (error) { 
-    console.error(`Error: ${error}`) 
-    res.sendStatus(500).json({ error: "Server-side Routing Failed to Fetch" })
+  } catch (error) {
+    console.error(`Error: ${error}`)
+    res.sendStatus(500).json({ error: 'Server-side Routing Failed to Fetch' })
   }
 })
 
@@ -24,7 +24,21 @@ router.get('/user/', checkJwt, async (req: JwtRequest, res) => {
     res.json(result)
   } catch (error) {
     console.error(`Error: ${error}`)
-    res.sendStatus(500).json({ error: "Server-side Routing Failed to Fetch" })
+    res.sendStatus(500).json({ error: 'Server-side Routing Failed to Fetch' })
+  }
+})
+
+router.get('/user/latest', checkJwt, async (req: JwtRequest, res) => {
+  const sub = req.auth?.sub
+  if (!sub) {
+    res.sendStatus(401)
+  }
+  try {
+    const result = await db.getLatestUserResponse(sub as string)
+    res.json(result)
+  } catch (error) {
+    console.error(`Error: ${error}`)
+    res.sendStatus(500).json({ error: 'Server-side Routing Failed to Fetch' })
   }
 })
 
@@ -35,11 +49,13 @@ router.post('/', checkJwt, async (req: JwtRequest, res) => {
     res.sendStatus(401)
   }
   try {
-    const result = await db.addResponse({...response, user_auth0_sub: sub})
+    const result = await db.addResponse({ ...response, user_auth0_sub: sub })
     res.json(result)
   } catch (error) {
     console.error(`Error: ${error}`)
-    res.sendStatus(500).json({ error: "Server-side Routing Failed to Add Response to Database" })
+    res
+      .sendStatus(500)
+      .json({ error: 'Server-side Routing Failed to Add Response to Database' })
   }
 })
 
@@ -50,10 +66,14 @@ router.delete('/:id', checkJwt, async (req: JwtRequest, res) => {
     res.sendStatus(401)
   }
   try {
-     await db.deleteResponse(Number(id))
+    await db.deleteResponse(Number(id))
   } catch (error) {
     console.error(`Error: ${error}`)
-    res.sendStatus(500).json({ error: "Server-side Routing Failed to Delete Response from Database" })
+    res
+      .sendStatus(500)
+      .json({
+        error: 'Server-side Routing Failed to Delete Response from Database',
+      })
   }
 })
 

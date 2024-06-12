@@ -2,10 +2,13 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { useState } from 'react'
 import DropdownMenu from './DropdownMenu'
 import LoginButton from './LoginButton'
+// import useResponses from '../hooks/useResponses'
 
 export default function UserProfileSummary() {
+  const [latest, setLatest] = useState(5)
   const [showMenu, setShowMenu] = useState(false)
   const { user, isAuthenticated, isLoading } = useAuth0()
+  
 
   if (isLoading) return <div>Loading Profile...</div>
   if (!user) return (
@@ -13,6 +16,8 @@ export default function UserProfileSummary() {
       <LoginButton />
     </div>
   )
+
+  console.log(latest)
 
   return (
     isAuthenticated && (
