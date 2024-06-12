@@ -9,10 +9,17 @@ export async function up(knex) {
     table.integer('quant')
     table.string('qual')
     table.datetime('datetime')
+    table.boolean('is_day')
     table.float('latitude')
     table.float('longitude')
     table.string('climate')
-    table.integer('temp_C')
+    table.float('temp_C')
+    table.float('uv_index')
+    table.integer('humidity_percent')
+    table.integer('cloud_cover_percent')
+    table.float('wind_kph')
+    table.string('wind_dir')
+    table.float('precip_mm')
   })
 };
 
