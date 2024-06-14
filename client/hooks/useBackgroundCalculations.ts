@@ -73,11 +73,9 @@ export default function useBackgroundCalculations() {
     calculateSaturation(sliderValue)
     calculateLightness(sliderValue)
     calculateAlpha(sliderValue)
-
-    console.log(sliderValue)
-    console.log(`hsla(${hue}, ${saturation}%, ${lightness}%, ${alpha}%)`)
-
-    return `hsla(${hue}, ${saturation}%, ${lightness}%, ${alpha}%)`
+    return {
+      sky: { hue, saturation, lightness, alpha },
+    }
   }
 
   return {

@@ -1,22 +1,16 @@
-import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import useBackgroundCalculations from '../hooks/useBackgroundCalculations'
+import { useNavigate, useOutletContext } from 'react-router-dom'
 import useResponses from '../hooks/useResponses'
 import useLocation from '../hooks/useLocation'
+import { QuantContextType } from './App'
 
 export default function Survey() {
-  const [sliderValue, setSliderValue] = useState(5000)
+  const [quant, setQuant] = useOutletContext<QuantContextType>() // TODO: FIX THIS TYPING; PROVIDE ITERATOR??
 
   const navigate = useNavigate()
-  const background = useBackgroundCalculations()
 
   function handleSliderChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setSliderValue(parseInt(e.target.value))
+    setQuant(parseInt(e.target.value))
   }
-
-  useEffect(() => {
-    document.body.style.backgroundColor = background.set(sliderValue)
-  }, [background, sliderValue])
 
   const response = useResponses()
   const location = useLocation()
@@ -58,16 +52,16 @@ export default function Survey() {
       <input
         type="range"
         min="1"
-        value={sliderValue}
+        value={quant}
         max="10000"
         className="slider mx-auto w-4/5"
         onChange={handleSliderChange}
       ></input>
       <button
         className="text-center text-3xl text-white"
-        onClick={() => handleSubmit(sliderValue)}
+        onClick={() => handleSubmit(quant)}
       >
-        {(sliderValue / 1000).toFixed(1)}
+        {(quant / 1000).toFixed(1)}
       </button>
     </div>
   )

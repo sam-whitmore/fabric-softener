@@ -4,18 +4,20 @@ import DropdownMenu from './DropdownMenu'
 import LoginButton from './LoginButton'
 // import useResponses from '../hooks/useResponses'
 
+// TODO: Set latest to equal the latest mood from the database using useResponses().latest()
+
 export default function UserProfileSummary() {
   const [latest, setLatest] = useState(5)
   const [showMenu, setShowMenu] = useState(false)
   const { user, isAuthenticated, isLoading } = useAuth0()
-  
 
   if (isLoading) return <div>Loading Profile...</div>
-  if (!user) return (
-    <div className="ml-auto flex items-center border-4 border-red-600">
-      <LoginButton />
-    </div>
-  )
+  if (!user)
+    return (
+      <div className="ml-auto flex items-center border-4 border-red-600">
+        <LoginButton />
+      </div>
+    )
 
   console.log(latest)
 
@@ -29,19 +31,17 @@ export default function UserProfileSummary() {
         <img
           src={user.picture}
           alt={user.name}
-          className="h-12 w-12 rounded-full m-4"
+          className="m-4 h-12 w-12 rounded-full"
         />
         <button
-          className="h-12 w-12 rounded-full m-4 bg-orange-300 hover:bg-orange-400"
+          className="m-4 h-12 w-12 rounded-full bg-orange-300 hover:bg-orange-400"
           onClick={() => {
             setShowMenu(!showMenu)
           }}
         >
           v
         </button>
-        {showMenu && (
-          <DropdownMenu />
-        )}
+        {showMenu && <DropdownMenu />}
       </div>
     )
   )
