@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --bg-gradient-sky-start: #fff;
+  --bg-gradient-sky-horizon: #fff;
+  --bg-gradient-ground-horizon: #fff;
+  --bg-gradient-ground-end: #377bb3;
+  --horizon-height: 50%
+}
+
+body {
+  background: linear-gradient(var(--bg-gradient-start) 0%, var(--bg-gradient-sky-horizon) var(--horizon-height), var(--bg-gradient-ground-horizon) var(--horizon-height), var(--bg-gradient-ground-end) 100%);
+}

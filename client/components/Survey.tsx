@@ -1,10 +1,10 @@
-import { useNavigate, useOutletContext } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import useResponses from '../hooks/useResponses'
 import useLocation from '../hooks/useLocation'
-import { QuantContextType } from './App'
+import { useQuant } from './App'
 
 export default function Survey() {
-  const [quant, setQuant] = useOutletContext<QuantContextType>() // TODO: FIX THIS TYPING; PROVIDE ITERATOR??
+  const [quant, setQuant] = useQuant()
 
   const navigate = useNavigate()
 

@@ -1,39 +1,40 @@
-import { Outlet } from 'react-router-dom'
-import { useEffect, useState } from 'react'
-import useBackgroundCalculations from '../hooks/useBackgroundCalculations'
+import { Outlet, useOutletContext } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import calculateBackground from '../functions/calculateBackground'
 
-export type QuantContextType = {
-  quant: number
-  setQuant: (n: number) => { quant: number }
+type QuantContextType = [
+  quant: number,
+  setQuant: (n: number) => { quant: number },
+]
+
+export function useQuant() {
+  return useOutletContext() as QuantContextType
 }
 
 export default function App() {
   const [quant, setQuant] = useState(5000)
-  const [sky, setSky] = useState({
-    hue: 210,
-    saturation: 65,
-    lightness: 75,
-    alpha: 100,
-  }) // I would rather not set these with default values, if possible!
-  const background = useBackgroundCalculations()
 
   useEffect(() => {
-    const { sky: calculatedSky } = background.set(quant)
-    console.trace('Background.set called') // TODO: background.set(quant) is calling itself recursively
-    if (calculatedSky !== sky) {
-      setSky(calculatedSky)
-      console.log(sky) // sky *is* updating based on the slider's value, being passed through <Outlet>'s context prop!
-    }
-  }, [background, quant, sky])
+    const { sky } = calculateBackground(quant)
+    document.body.style.setProperty(
+      '--bg-gradient-sky-start',
+      `hsla(${sky.hue} ${sky.saturation}% ${sky.lightness}% / ${sky.alpha})`,
+    )
+    document.body.style.setProperty(
+      '--bg-gradient-sky-horizon',
+      `hsla(${sky.hue} ${sky.saturation}% ${sky.lightness}% / ${sky.alpha})`,
+    )
+    document.body.style.setProperty(
+      '--horizon-height',
+      `${(quant / 100).toFixed(0)}%`,
+    )
+  }, [quant])
 
   return (
-    <div className="app">
-      <div
-        className={`bg-gradient-to-t from-hsl({${sky.hue} ${sky.saturation} ${sky.lightness}}) 50%, to-blue`}
-      >
-        {/* this bg-gradient is not functioning; not on the initial load or any others. */}
+    <>
+      <div className="app w-screen, h-screen">
         <Outlet context={[quant, setQuant]} />
       </div>
-    </div>
+    </>
   )
 }
