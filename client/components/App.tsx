@@ -18,15 +18,15 @@ export default function App() {
     const { sky } = calculateBackground(quant)
     document.body.style.setProperty(
       '--bg-gradient-sky-start',
-      `hsla(${sky.hue} ${sky.saturation}% ${sky.lightness}% / ${sky.alpha})`,
+      `hsl(${sky.hue} ${sky.saturation}% ${sky.lightness}%)`,
     )
     document.body.style.setProperty(
       '--bg-gradient-sky-horizon',
-      `hsla(${sky.hue} ${sky.saturation}% ${sky.lightness}% / ${sky.alpha})`,
+      `hsl(${sky.hue} ${sky.saturation}% ${sky.lightness}%)`,
     )
     document.body.style.setProperty(
       '--horizon-height',
-      `${(quant / 100).toFixed(0)}%`,
+      `${(quant / 100)}%`,
     )
   }, [quant])
 

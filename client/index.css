@@ -11,5 +11,5 @@
 }
 
 body {
-  background: linear-gradient(var(--bg-gradient-start) 0%, var(--bg-gradient-sky-horizon) var(--horizon-height), var(--bg-gradient-ground-horizon) var(--horizon-height), var(--bg-gradient-ground-end) 100%);
+  background-image: linear-gradient(var(--bg-gradient-sky-start) 0%, var(--bg-gradient-sky-horizon) var(--horizon-height), var(--bg-gradient-ground-horizon) var(--horizon-height), var(--bg-gradient-ground-end) 100%);
 }
