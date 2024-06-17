@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@auth0/auth0-react": "^2.2.4",
+    "@nivo/line": "^0.87.0",
     "curve-interpolator": "^3.3.1",
     "d3": "^7.9.0",
     "dotenv": "^16.4.5",

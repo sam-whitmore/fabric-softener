@@ -1,5 +1,6 @@
 import useResponses from '../hooks/useResponses'
 import SingleResponse from './SingleResponse'
+import LinePlot from './graphics/LinePlot'
 
 export default function UserData() {
   const responses = useResponses()
@@ -12,8 +13,16 @@ export default function UserData() {
     return <p>Error: {error.message}</p>
   }
 
+  // const formattedData = [
+  //   id: 23,
+  //   {
+
+  // }]
+
   return (
-    <div>
+    <div className="flex p-2 w-[1200px] h-[600px]">
+      <LinePlot />
+      <div>
       {data.map((response) => (
         <SingleResponse
           key={response.id}
@@ -35,6 +44,7 @@ export default function UserData() {
           precip_mm={response.precip_mm}
         />
       ))}
+      </div>
     </div>
   )
 }

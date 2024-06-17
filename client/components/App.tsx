@@ -27,7 +27,7 @@ export default function App() {
     document.body.style.setProperty('--sky-horizon-height', `${quant / 100}%`)
     document.body.style.setProperty(
       '--ground-horizon-height',
-      `${quant / 100 + 1}%`,
+      `${quant / 100}%`,
     )
     document.body.style.setProperty(
       '--bg-gradient-ground-horizon',
