@@ -1,5 +1,4 @@
 import { ResponsiveLine } from "@nivo/line";
-import useResponses from "../../hooks/useResponses";
 
 export default function LinePlot() {
 
@@ -277,7 +276,7 @@ export default function LinePlot() {
   ]
   
   return (
-    <div className="w-2/3 h-2/3">
+    <div className="h-[650px]">
       <ResponsiveLine 
         data={data}
         margin={{ top: 50, right: 110, bottom: 50, left: 60 }}

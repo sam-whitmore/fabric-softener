@@ -6,7 +6,7 @@ import { useQuant } from './App'
 import { Link } from 'react-router-dom'
 
 export default function UserProfileSummary() {
-  const [quant, setQuant] = useQuant()
+  const [quant] = useQuant()
   const [showMenu, setShowMenu] = useState(false)
   const { user, isAuthenticated, isLoading } = useAuth0()
 

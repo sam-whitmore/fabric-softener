@@ -1,28 +1,33 @@
 import useResponses from '../hooks/useResponses'
-import SingleResponse from './SingleResponse'
+// import SingleResponse from './SingleResponse'
 import LinePlot from './graphics/LinePlot'
+import { useAuth0 } from '@auth0/auth0-react'
 
 export default function UserData() {
-  const responses = useResponses()
+  const { user, isLoading } = useAuth0()
+  const { data: responses, isPending, isError, error } = useResponses().allByUser()
 
-  const { data, isPending, isError, error } = responses.allByUser()
-
+  if (isLoading) return <p>Signing in...</p>
+  if (!user) return <p>Sign in to store your data.</p>
   if (isPending) return <p>Fetching User Data...</p>
   if (isError) {
     console.error(error)
     return <p>Error: {error.message}</p>
   }
 
-  // const formattedData = [
-  //   id: 23,
-  //   {
+  const formattedData = [{
+    id: user.name,
+    data: [{}]
+  }]
 
-  // }]
+  responses.map((response) => { formattedData[0].data.push({x: response.datetime, y: response.quant})})
+
+  console.log(formattedData)
 
   return (
-    <div className="flex p-2 w-[1200px] h-[600px]">
+    <div className="m-4 shadow-lg bg-slate-50 rounded-xl p-2 w-auto h-[700px]">
       <LinePlot />
-      <div>
+      {/* <div>
       {data.map((response) => (
         <SingleResponse
           key={response.id}
@@ -44,7 +49,7 @@ export default function UserData() {
           precip_mm={response.precip_mm}
         />
       ))}
-      </div>
+      </div> */}
     </div>
   )
 }
