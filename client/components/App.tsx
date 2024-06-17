@@ -15,18 +15,27 @@ export default function App() {
   const [quant, setQuant] = useState(5000)
 
   useEffect(() => {
-    const { sky } = calculateBackground(quant)
+    const { sky, ground } = calculateBackground(quant)
     document.body.style.setProperty(
       '--bg-gradient-sky-start',
-      `hsl(${sky.hue} ${sky.saturation}% ${sky.lightness}%)`,
+      `hsl(${sky.top.hue} ${sky.top.saturation}% ${sky.top.lightness}%)`,
     )
     document.body.style.setProperty(
       '--bg-gradient-sky-horizon',
-      `hsl(${sky.hue} ${sky.saturation}% ${sky.lightness}%)`,
+      `hsl(${sky.horizon.hue} ${sky.horizon.saturation}% ${sky.horizon.lightness}%)`,
+    )
+    document.body.style.setProperty('--sky-horizon-height', `${quant / 100}%`)
+    document.body.style.setProperty(
+      '--ground-horizon-height',
+      `${quant / 100 + 1}%`,
     )
     document.body.style.setProperty(
-      '--horizon-height',
-      `${(quant / 100)}%`,
+      '--bg-gradient-ground-horizon',
+      `hsl(${ground.horizon.hue} ${ground.horizon.saturation}% ${ground.horizon.lightness}%)`,
+    )
+    document.body.style.setProperty(
+      '--bg-gradient-ground-end',
+      `hsl(${ground.end.hue} ${ground.end.saturation}% ${ground.end.lightness}%)`,
     )
   }, [quant])
 

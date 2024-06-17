@@ -6,10 +6,11 @@
   --bg-gradient-sky-start: #fff;
   --bg-gradient-sky-horizon: #fff;
   --bg-gradient-ground-horizon: #fff;
-  --bg-gradient-ground-end: #377bb3;
-  --horizon-height: 50%
+  --bg-gradient-ground-end: #fff;
+  --sky-horizon-height: 50%;
+  --ground-horizon-height: 51%;
 }
 
 body {
-  background-image: linear-gradient(var(--bg-gradient-sky-start) 0%, var(--bg-gradient-sky-horizon) var(--horizon-height), var(--bg-gradient-ground-horizon) var(--horizon-height), var(--bg-gradient-ground-end) 100%);
+  background-image: linear-gradient(var(--bg-gradient-sky-start) 0%, var(--bg-gradient-sky-horizon) var(--sky-horizon-height), var(--bg-gradient-ground-horizon) var(--ground-horizon-height), var(--bg-gradient-ground-end) 100%);
 }
