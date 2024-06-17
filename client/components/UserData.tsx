@@ -22,10 +22,17 @@ export default function UserData() {
           quant={response.quant}
           qual={response.qual}
           datetime={response.datetime}
+          is_day={response.is_day}
           latitude={response.latitude}
           longitude={response.longitude}
           climate={response.climate}
           temp_C={response.temp_C}
+          uv_index={response.uv_index}
+          humidity_percent={response.humidity_percent}
+          cloud_cover_percent={response.cloud_cover_percent}
+          wind_kph={response.wind_kph}
+          wind_dir={response.wind_dir}
+          precip_mm={response.precip_mm}
         />
       ))}
     </div>

@@ -5,10 +5,10 @@ export default function LoginButton() {
 
   return (
     <button
-      className="h-auto w-48 m-2 p-4 bg-slate-100 rounded"
+      className="align-center rounded bg-slate-100 pl-4 pr-2 text-right text-xl hover:underline"
       onClick={() => loginWithPopup()}
     >
-      Log In
+      Sign In
     </button>
   )
 }

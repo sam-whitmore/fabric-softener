@@ -5,7 +5,7 @@ export default function DropdownMenu() {
   const { user } = useAuth0()
 
   return (
-    <div className="rounded shadow-lg">
+    <div className="rounded border-2">
       {user && <LogoutButton />}
     </div>
   )

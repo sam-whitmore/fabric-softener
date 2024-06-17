@@ -14,3 +14,8 @@
 body {
   background-image: linear-gradient(var(--bg-gradient-sky-start) 0%, var(--bg-gradient-sky-horizon) var(--sky-horizon-height), var(--bg-gradient-ground-horizon) var(--ground-horizon-height), var(--bg-gradient-ground-end) 100%);
 }
+
+#quant-summary {
+  border-color: var(--bg-gradient-sky-start);
+  color: var(--bg-gradient-sky-start);
+}
