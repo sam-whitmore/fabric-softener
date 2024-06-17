@@ -47,8 +47,8 @@ export default function Survey() {
   }
 
   return (
-    <div className="h-screen w-screen text-center">
-      <p className="text-center text-3xl text-white">How are you?</p>
+    <div className="relative h-screen w-screen text-center">
+      <p className="absolute top-1/4 left-1/2 -translate-y-1/2 -translate-x-1/2 text-center text-8xl text-white">How are you?</p>
       <input
         type="range"
         min="1"
@@ -58,7 +58,7 @@ export default function Survey() {
         onChange={handleSliderChange}
       ></input>
       <button
-        className="text-center text-3xl text-white"
+        className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 text-center text-9xl text-white"
         onClick={() => handleSubmit(quant)}
       >
         {(quant / 1000).toFixed(1)}
