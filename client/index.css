@@ -13,7 +13,7 @@
 
 textarea:focus,
 input:focus {
-  outline-color: var(--bg-gradient-sky-start);
+  outline: none;
 }
 
 body {
@@ -30,12 +30,21 @@ body {
   color: var(--bg-gradient-sky-start);
 }
 
-#quant-summary:hover {
-  background-color: var(--bg-gradient-sky-horizon);
+#survey-quant-summary {
   color: var(--bg-gradient-sky-start);
+}
+
+#survey-quant-summary:hover {
+  border-color: var(--bg-gradient-sky-start);
+  color: var(--bg-gradient-sky-start);
+  content: '+'
 }
 
 #qual-summary {
   border-color: var(--bg-gradient-sky-start);
   color: var(--bg-gradient-sky-start);
+}
+
+#qual-summary:hover {
+  border-color: var(--bg-gradient-sky-start);
 }

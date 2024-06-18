@@ -7,7 +7,7 @@ import { useState } from 'react' // useEffect, useRef
 export default function Survey() {
   // const myRef = useRef(null);
   const [quant, setQuant] = useQuant()
-  const [qual, setQual] = useState('')
+  const [qual, setQual] = useState()
 
   const navigate = useNavigate()
 
@@ -61,12 +61,10 @@ export default function Survey() {
 
     navigate('/home')
   }
-  // ref={myRef} 
+  // ref={myRef}
   return (
-    <div className="relative h-screen w-screen text-center"> 
-      <p className="absolute left-1/2 top-1/4 -translate-x-1/2 -translate-y-1/2 text-center text-8xl text-white">
-        How are you?
-      </p>
+    <form className="relative h-screen w-screen text-center">
+      <h1 className="mx-auto text-center text-5xl text-white">How are you?</h1>
       <input
         type="range"
         min="1"
@@ -75,23 +73,23 @@ export default function Survey() {
         className="slider mx-auto w-4/5"
         onChange={handleSliderChange}
       ></input>
-      <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 justify-between rounded-full bg-slate-50 text-6xl font-extralight text-white shadow-md">
+      <div className="absolute left-1/2 top-1/2 flex w-auto max-w-[90%] -translate-x-1/2 -translate-y-1/2 justify-between rounded-full bg-slate-50 text-6xl font-extralight text-white shadow-md">
         <input
           id="qual-summary"
           name="qual"
           type="text"
           value={qual}
-          className="m-2 mr-0 w-auto rounded-full bg-slate-50 text-center"
+          className="height-auto border-box m-2 mr-0 w-72 rounded-full bg-slate-50 px-10 text-right hover:border-2"
           onChange={(e) => setQual(e.target.value)}
         ></input>
         <button
-          id="quant-summary"
+          id="survey-quant-summary"
           className="m-2 h-24 w-24 rounded-full hover:border-2"
           onClick={() => handleSubmit(quant)}
         >
           {(quant / 1000).toFixed(0)}
         </button>
       </div>
-    </div>
+    </form>
   )
 }
