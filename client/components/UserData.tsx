@@ -1,6 +1,6 @@
 import useResponses from '../hooks/useResponses'
-// import SingleResponse from './SingleResponse'
-import LinePlot from './graphics/LinePlot'
+import SingleResponse from './SingleResponse'
+// import LinePlot from './graphics/LinePlot'
 import { useAuth0 } from '@auth0/auth0-react'
 
 export default function UserData() {
@@ -25,10 +25,10 @@ export default function UserData() {
   console.log(formattedData)
 
   return (
-    <div className="m-4 shadow-lg bg-slate-50 rounded-xl p-2 w-auto h-[700px]">
-      <LinePlot />
-      {/* <div>
-      {data.map((response) => (
+    <div className="m-4 shadow-lg bg-slate-50 rounded-xl p-2 w-auto h-[700px] overflow-y-scroll">
+      {/* <LinePlot /> */}
+      <div>
+      {responses.map((response) => (
         <SingleResponse
           key={response.id}
           id={response.id}
@@ -49,7 +49,7 @@ export default function UserData() {
           precip_mm={response.precip_mm}
         />
       ))}
-      </div> */}
+      </div>
     </div>
   )
 }

@@ -11,11 +11,31 @@
   --ground-horizon-height: 51%;
 }
 
+textarea:focus,
+input:focus {
+  outline-color: var(--bg-gradient-sky-start);
+}
+
 body {
-  background-image: linear-gradient(var(--bg-gradient-sky-start) 0%, var(--bg-gradient-sky-horizon) var(--sky-horizon-height), var(--bg-gradient-ground-horizon) var(--ground-horizon-height), var(--bg-gradient-ground-end) 100%);
+  background-image: linear-gradient(
+    var(--bg-gradient-sky-start) 0%,
+    var(--bg-gradient-sky-horizon) var(--sky-horizon-height),
+    var(--bg-gradient-ground-horizon) var(--ground-horizon-height),
+    var(--bg-gradient-ground-end) 100%
+  );
 }
 
 #quant-summary {
+  border-color: var(--bg-gradient-sky-start);
+  color: var(--bg-gradient-sky-start);
+}
+
+#quant-summary:hover {
+  background-color: var(--bg-gradient-sky-horizon);
+  color: var(--bg-gradient-sky-start);
+}
+
+#qual-summary {
   border-color: var(--bg-gradient-sky-start);
   color: var(--bg-gradient-sky-start);
 }
