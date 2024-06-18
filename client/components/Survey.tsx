@@ -64,12 +64,13 @@ export default function Survey() {
   // ref={myRef}
   return (
     <form className="relative h-screen w-screen text-center">
-      <h1 className="mx-auto text-center text-5xl text-white">How are you?</h1>
+      <h1 id="question" className="mx-auto text-center text-5xl text-white">How are you?</h1>
       <input
         type="range"
         min="1"
         value={quant}
         max="10000"
+        aria-labelledby='question'
         className="slider mx-auto w-4/5"
         onChange={handleSliderChange}
       ></input>
@@ -79,6 +80,7 @@ export default function Survey() {
           name="qual"
           type="text"
           value={qual}
+          aria-labelledby='question'
           className="height-auto border-box m-2 mr-0 w-72 rounded-full bg-slate-50 px-10 text-right hover:border-2"
           onChange={(e) => setQual(e.target.value)}
         ></input>

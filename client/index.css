@@ -31,7 +31,7 @@ body {
 }
 
 #survey-quant-summary {
-  color: var(--bg-gradient-sky-start);
+  color: var(--bg-gradient-sky-start)
 }
 
 #survey-quant-summary:hover {

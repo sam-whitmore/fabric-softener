@@ -67,6 +67,7 @@ router.delete('/:id', checkJwt, async (req: JwtRequest, res) => {
   }
   try {
     await db.deleteResponse(Number(id))
+    res.sendStatus(204)
   } catch (error) {
     console.error(`Error: ${error}`)
     res
