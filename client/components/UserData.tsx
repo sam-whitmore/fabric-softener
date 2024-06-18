@@ -1,6 +1,6 @@
 import useResponses from '../hooks/useResponses'
-import SingleResponse from './SingleResponse'
-// import LinePlot from './graphics/LinePlot'
+// import SingleResponse from './SingleResponse'
+import ScatterPlotContainer from './graphics/QuantScatter'
 import { useAuth0 } from '@auth0/auth0-react'
 
 export default function UserData() {
@@ -15,19 +15,10 @@ export default function UserData() {
     return <p>Error: {error.message}</p>
   }
 
-  const formattedData = [{
-    id: user.name,
-    data: [{}]
-  }]
-
-  responses.map((response) => { formattedData[0].data.push({x: response.datetime, y: response.quant})})
-
-  console.log(formattedData)
-
   return (
-    <div className="m-4 shadow-lg bg-slate-50 rounded-xl p-2 w-auto h-[700px] overflow-y-scroll">
-      {/* <LinePlot /> */}
-      <div>
+    <div className="m-4 shadow-lg bg-slate-50 rounded-xl p-2 w-[1100px] h-[700px]">
+      <ScatterPlotContainer />
+      {/* <div>
       {responses.map((response) => (
         <SingleResponse
           key={response.id}
@@ -49,7 +40,7 @@ export default function UserData() {
           precip_mm={response.precip_mm}
         />
       ))}
-      </div>
+      </div> */}
     </div>
   )
 }

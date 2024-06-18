@@ -37,6 +37,10 @@ export default function App() {
       '--bg-gradient-ground-end',
       `hsl(${ground.end.hue} ${ground.end.saturation}% ${ground.end.lightness}%)`,
     )
+    document.body.style.setProperty(
+      '--circle-color',
+      `hsl(${sky.top.hue} ${sky.top.saturation}% ${sky.top.lightness}%)`
+    )
   }, [quant])
 
   return (

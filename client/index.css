@@ -9,6 +9,7 @@
   --bg-gradient-ground-end: #fff;
   --sky-horizon-height: 50%;
   --ground-horizon-height: 51%;
+  --circle-color: var(--bg-gradient-sky-start);
 }
 
 textarea:focus,
@@ -23,6 +24,10 @@ body {
     var(--bg-gradient-ground-horizon) var(--ground-horizon-height),
     var(--bg-gradient-ground-end) 100%
   );
+}
+
+circle {
+  fill: var(--circle-color)
 }
 
 #quant-summary {
@@ -47,4 +52,8 @@ body {
 
 #qual-summary:hover {
   border-color: var(--bg-gradient-sky-start);
+}
+
+.node-summary {
+  border-color: var(--circle-color)
 }
