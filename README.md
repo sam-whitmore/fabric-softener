@@ -10,5 +10,5 @@ This is my first full-stack attempt at building Fabric, a mental health applicat
 - **Routing:** React Router
 - **State Management:** ReactQuery
 - **Styling:** TailwindCSS
-- **Testing:** Vitest (to-do)
-- **Hosting:** Dokku (to-do)
+- **Testing:** Vitest *(to-do)*
+- **Hosting:** Dokku *(to-do)*
